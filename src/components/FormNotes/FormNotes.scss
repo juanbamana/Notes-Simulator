@@ -1,0 +1,27 @@
+.form-notes{
+    background-color: #fff;
+    border: 2px solid #00acee;
+    padding: 20px;
+    width: 600px;
+
+
+    &__title{
+        margin:0% !important;
+        color:blue;
+    }
+
+    &__form{
+        .MuiFormControl-root {
+            width: 100%;
+        }
+
+        &-name{
+            width: 50% !important;
+        }
+
+        &-textarea{
+            width: 100%;
+        }
+    }
+}
+

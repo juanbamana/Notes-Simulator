@@ -4,6 +4,7 @@ import AddIcon from '@mui/icons-material/Add';
 import './SendNotes.scss'
 import moment from 'moment';
 import { ModalContainer } from '../Modal/ModalContainer';
+import { FormNotes } from '../FormNotes/FormNotes';
 
 export const SendNotes = () => {
 
@@ -27,9 +28,7 @@ const closeModal = () =>{
 
 <ModalContainer isOpenModal={isOpenModal} closeModal={closeModal}>
 
-  Probando mi puto Modal
-
-
+<FormNotes/>
 </ModalContainer>
     </div>
   )
