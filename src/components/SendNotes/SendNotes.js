@@ -7,7 +7,7 @@ import { ModalContainer } from "../Modal/ModalContainer";
 import { FormNotes } from "../FormNotes/FormNotes";
 import { COMENTS_STORAGE } from "../../utils/constants";
 
-export const SendNotes = ({ setToastProps }) => {
+export const SendNotes = ({ setToastProps, allComents }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const openModal = () => {
@@ -21,22 +21,27 @@ export const SendNotes = ({ setToastProps }) => {
   const sendNotes = (event, formState) => {
     event.preventDefault();
     const { name, coment } = formState;
-    let allComents = [];
-    if(!name || !coment){
-       setToastProps({
-          open: true,
-          text: "Por favor, rellena todos los campos",
-        })
-     }else{ (formState.time = moment().format("HH:mm:ss"));
-    allComents.push(formState);
-    localStorage.setItem(COMENTS_STORAGE, JSON.stringify(allComents));
-    setToastProps({
-      open: true,
-      text: "Comentario enviado correctamente",
-    });
-    closeModal();
-  }
-    allComents = [];
+    let allComentsArray = [];
+
+    if (allComents) {
+      allComentsArray = allComents;
+    }
+    if (!name || !coment) {
+      setToastProps({
+        open: true,
+        text: "Por favor, rellena todos los campos",
+      });
+    } else {
+      formState.time = moment().format("HH:mm:ss");
+      allComentsArray.push(formState);
+      localStorage.setItem(COMENTS_STORAGE, JSON.stringify(allComentsArray));
+      setToastProps({
+        open: true,
+        text: "Comentario enviado correctamente",
+      });
+      closeModal();
+    }
+    allComentsArray = [];
   };
 
   return (
