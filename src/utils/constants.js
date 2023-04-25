@@ -1,0 +1,1 @@
+export const COMENTS_STORAGE = "coment-lt"
