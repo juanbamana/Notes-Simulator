@@ -15,6 +15,7 @@ function App() {
   })
 
   const [allComments, setAllComments] = useState([])
+  const [reloaded, setReloaded] = useState(false)
 
  useEffect(() => {
    
@@ -23,8 +24,30 @@ function App() {
   const allComments = JSON.parse(allCommentsStorage)
 
   setAllComments(allComments)
- 
- }, [])
+  setReloaded(false)
+ }, [reloaded])
+
+
+ const deleteComments = (index) =>{
+  allComments.splice(index, 1)
+  setAllComments(allComments)
+  localStorage.setItem(COMMENTS_STORAGE, JSON.stringify(allComments))
+  setReloaded(false)
+  setToastProps({
+    open: true,
+    text: 'Comentario eliminado correctamente'
+  })
+
+
+ }
+
+ const handleClose = () => {
+
+  setToastProps({
+    open: false,
+    text: null
+  })
+ }
  
 
 
@@ -32,13 +55,13 @@ function App() {
     <Container className="notes-simulator" maxWidth={false}>
       <Header />
       <SendNotes setToastProps={setToastProps} allComments={allComments}/>
-       <ListComments allComments={allComments}/>
+       <ListComments allComments={allComments} deleteComments={deleteComments}/>
       <Snackbar
       anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       open={toastProps.open}
-      autoHideDuration={100}
+      autoHideDuration={2000}
       message={<span id='message-id'>{toastProps.text}</span>}
-      
+      onClose={handleClose}
       />
     </Container>
   );

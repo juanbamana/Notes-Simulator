@@ -17,7 +17,7 @@ export const FormNotes = ({sendNotes}) => {
 
 const [formState, setFormState] = useState({
     name: "",
-    coment: ""
+    comment: ""
 })
 
 
@@ -41,7 +41,7 @@ const [formState, setFormState] = useState({
           <FormGroup>
             <TextField
               className="form-notes__form-textarea"
-              name="coment"
+              name="comment"
               multiline
               rows="6"
               placeholder="Escribe tu Comentario..."

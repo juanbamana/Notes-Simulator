@@ -13,7 +13,6 @@ export const ModalContainer = ({isOpenModal,closeModal, children}) => {
   className="modal-container"
   open={isOpenModal}
   onClose={closeModal}
-  closeAfterTransitions
 >
   <div>{children}</div>
  </Modal>

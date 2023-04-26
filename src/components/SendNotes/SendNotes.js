@@ -20,19 +20,19 @@ export const SendNotes = ({ setToastProps, allComments }) => {
 
   const sendNotes = (event, formState) => {
     event.preventDefault();
-    const { name, coment } = formState;
+    const { name, comment } = formState;
     let allCommentsArray = [];
 
     if (allComments) {
       allCommentsArray = allComments;
     }
-    if (!name || !coment) {
+    if (!name || !comment) {
       setToastProps({
         open: true,
         text: "Por favor, rellena todos los campos",
       });
     } else {
-      formState.time = moment().format("HH:mm:ss");
+      formState.time = moment();
       allCommentsArray.push(formState);
       localStorage.setItem(COMMENTS_STORAGE, JSON.stringify(allCommentsArray));
       setToastProps({

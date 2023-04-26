@@ -1,9 +1,9 @@
 import React from "react";
 import { Grid } from "@mui/material";
-
+import {Comments} from "../Comments/Comments";
 import "./ListComments.scss";
 
-export const ListComments = ({ allComments }) => {
+export const ListComments = ({ allComments, deleteComments }) => {
   if (!allComments || allComments.length === 0) {
     return (
       <div className="list-comments-empty">
@@ -14,10 +14,9 @@ export const ListComments = ({ allComments }) => {
 
   return (
     <Grid container spacing={2} className="list-comments">
-      {allComments.map((comment, index) => (
+      {allComments.map((mycomment, index) => (
         <Grid item xs={4} key={index}>
-            {comment.name}
-            
+            <Comments mycomment={mycomment} index={index} deleteComments={deleteComments}/>
         </Grid>
       ))}
     </Grid>
