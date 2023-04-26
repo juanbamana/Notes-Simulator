@@ -1,1 +1,1 @@
-export const COMENTS_STORAGE = "coment-lt"
+export const COMMENTS_STORAGE = "coment-lt"

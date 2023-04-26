@@ -5,9 +5,9 @@ import "./SendNotes.scss";
 import moment from "moment";
 import { ModalContainer } from "../Modal/ModalContainer";
 import { FormNotes } from "../FormNotes/FormNotes";
-import { COMENTS_STORAGE } from "../../utils/constants";
+import { COMMENTS_STORAGE } from "../../utils/constants";
 
-export const SendNotes = ({ setToastProps, allComents }) => {
+export const SendNotes = ({ setToastProps, allComments }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const openModal = () => {
@@ -21,10 +21,10 @@ export const SendNotes = ({ setToastProps, allComents }) => {
   const sendNotes = (event, formState) => {
     event.preventDefault();
     const { name, coment } = formState;
-    let allComentsArray = [];
+    let allCommentsArray = [];
 
-    if (allComents) {
-      allComentsArray = allComents;
+    if (allComments) {
+      allCommentsArray = allComments;
     }
     if (!name || !coment) {
       setToastProps({
@@ -33,15 +33,15 @@ export const SendNotes = ({ setToastProps, allComents }) => {
       });
     } else {
       formState.time = moment().format("HH:mm:ss");
-      allComentsArray.push(formState);
-      localStorage.setItem(COMENTS_STORAGE, JSON.stringify(allComentsArray));
+      allCommentsArray.push(formState);
+      localStorage.setItem(COMMENTS_STORAGE, JSON.stringify(allCommentsArray));
       setToastProps({
         open: true,
         text: "Comentario enviado correctamente",
       });
       closeModal();
     }
-    allComentsArray = [];
+    allCommentsArray = [];
   };
 
   return (

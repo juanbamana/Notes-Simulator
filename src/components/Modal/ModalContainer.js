@@ -7,7 +7,6 @@ import './ModalContainer.scss'
 
 
 export const ModalContainer = ({isOpenModal,closeModal, children}) => {
-  console.log(isOpenModal)
 
   return (
  <Modal

@@ -2,7 +2,8 @@ import { Header } from "./components/Header/Header";
 import { Container, Snackbar } from '@mui/material';
 import { SendNotes } from "./components/SendNotes/SendNotes";
 import React, {useState, useEffect}  from 'react'
-import { COMENTS_STORAGE } from "./utils/constants";
+import { COMMENTS_STORAGE } from "./utils/constants";
+import { ListComments } from "./components/ListComments/ListComments";
 
 
 function App() {
@@ -13,15 +14,15 @@ function App() {
     text: null
   })
 
-  const [allComents, setAllComents] = useState([])
+  const [allComments, setAllComments] = useState([])
 
  useEffect(() => {
    
-  const allComentsStorage = localStorage.getItem(COMENTS_STORAGE)
+  const allCommentsStorage = localStorage.getItem(COMMENTS_STORAGE)
 
-  const allComents = JSON.parse(allComentsStorage)
+  const allComments = JSON.parse(allCommentsStorage)
 
-  setAllComents(allComents)
+  setAllComments(allComments)
  
  }, [])
  
@@ -30,8 +31,8 @@ function App() {
   return (
     <Container className="notes-simulator" maxWidth={false}>
       <Header />
-      <SendNotes setToastProps={setToastProps} allComents={allComents}/>
-
+      <SendNotes setToastProps={setToastProps} allComments={allComments}/>
+       <ListComments allComments={allComments}/>
       <Snackbar
       anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       open={toastProps.open}
